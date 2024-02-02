@@ -164,6 +164,7 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    pagy (6.4.3)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
@@ -331,6 +332,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  pagy
   pg (~> 1.1)
   pry
   puma (>= 5.0)
