@@ -139,6 +139,14 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.1)
+    jsonapi-rspec (0.0.11)
+      rspec-core
+      rspec-expectations
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
+    jsonapi.rb (2.0.1)
+      jsonapi-serializer
+      rack
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -221,6 +229,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.6.2)
       psych (>= 4.0.0)
     regexp_parser (2.9.0)
@@ -336,11 +348,15 @@ DEPENDENCIES
   has_scope
   importmap-rails
   jbuilder
+  jsonapi-rspec
+  jsonapi-serializer
+  jsonapi.rb
   pagy
   pg (~> 1.1)
   pry
   puma (>= 5.0)
   rails (~> 7.1.3)
+  ransack
   rspec-rails (~> 6.1.0)
   rubocop
   rubocop-performance

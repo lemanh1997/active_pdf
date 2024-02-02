@@ -17,6 +17,7 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'jsonapi/rspec'
 
 SimpleCov.start 'rails' do
   add_group 'Services', 'app/services'
@@ -99,4 +100,9 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  config.include JSONAPI::RSpec
+
+  # Support for documents with mixed string/symbol keys. Disabled by default.
+  config.jsonapi_indifferent_hash = true
 end
