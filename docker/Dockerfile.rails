@@ -4,7 +4,7 @@ ENV LANG C.UTF-8
 ENV TZ=Asia/Ho_Chi_Minh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get -y install curl npm gcc g++ make libpq-dev
+RUN apt-get update && apt-get -y install curl npm gcc g++ make libpq-dev git
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 RUN apt-get update && \
   npm install -g yarn && \
