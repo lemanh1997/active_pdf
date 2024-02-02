@@ -50,6 +50,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem "rspec-rails", "~> 6.1.0"
   gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
