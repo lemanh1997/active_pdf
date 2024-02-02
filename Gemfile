@@ -52,6 +52,10 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "simplecov", require: false
+  gem "rubocop", require: false
+  gem "rubocop-performance"
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :development do
