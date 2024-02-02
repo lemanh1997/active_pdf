@@ -58,6 +58,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "annotate"
   gem "pry"
+  gem "pagy"
 end
 
 group :development do
