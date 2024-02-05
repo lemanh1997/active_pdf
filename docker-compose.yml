@@ -8,7 +8,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
+      POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - ${DB_HOST_PORT}:5432
@@ -23,23 +23,35 @@ services:
       target: base
     depends_on:
       - postgres
+      - redis
     volumes:
       - .:/app:cached
     ports:
       - ${APP_HOST_PORT}:3000
-    environment:
-      DB_HOST: ${DB_HOST}
-      DB_NAME: ${DB_NAME}
-      DB_USERNAME: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
     command: sh ./docker/entrypoint.sh
     privileged: true
+    env_file:
+      - ".env"
   redis:
     image: redis:latest
     container_name: active-pdf-redis
     command: redis-server
     ports:
       - ${REDIS_PORT}:6379
+  sidekiq:
+    container_name: active-pdf-sidekiq
+    build:
+      context: docker
+      dockerfile: Dockerfile.rails
+      target: base
+    depends_on:
+      - postgres
+      - redis
+    command: sh ./docker/entrypoint-sidekiq.sh
+    volumes:
+      - .:/app
+    env_file:
+      - ".env"
 
 volumes:
   postgres_data: {}
