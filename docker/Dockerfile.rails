@@ -24,5 +24,8 @@ COPY Gemfile* /app/
 COPY ./entrypoint.sh /docker/entrypoint.sh
 RUN chmod +x /docker/entrypoint.sh
 
+COPY ./entrypoint-sidekiq.sh /docker/entrypoint-sidekiq.sh
+RUN chmod +x /docker/entrypoint-sidekiq.sh
+
 COPY ./entrypoint.sh /docker/wait-fot-it.sh
 RUN chmod +x /docker/wait-fot-it.sh
