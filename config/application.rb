@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "sidekiq/web"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,5 +24,17 @@ module ActivePdf
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set Sidekiq as the back-end for Active Job.
+    config.active_job.queue_adapter = :sidekiq
+
+    # Protect sidekiq-web
+    Sidekiq::Web.use(Rack::Auth::Basic) do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch("SIDEKIQ_WEB_USERNAME", "sidekiq-web-dashboard")) &&
+        ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch("SIDEKIQ_WEB_PASSWORD", "sidekiq-web-password"))
+    end
+
+    # Prepend all log lines with the following tags.
+    config.log_tags = [:request_id]
   end
 end

@@ -7,4 +7,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  mount Sidekiq::Web => "/sidekiq"
+
+  # Devise exists
+  # authenticate :user, lambda { |u| u.admin? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 end
