@@ -5,7 +5,7 @@ ENV TZ=Asia/Ho_Chi_Minh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get -y install curl npm gcc g++ make libpq-dev git
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && apt-get install -y nodejs
 RUN apt-get update && \
   npm install -g yarn && \
   apt-get upgrade -qq && \
@@ -26,6 +26,9 @@ RUN chmod +x /docker/entrypoint.sh
 
 COPY ./entrypoint-sidekiq.sh /docker/entrypoint-sidekiq.sh
 RUN chmod +x /docker/entrypoint-sidekiq.sh
+
+COPY ./entrypoint-vite.sh /docker/entrypoint-vite.sh
+RUN chmod +x /docker/entrypoint-vite.sh
 
 COPY ./entrypoint.sh /docker/wait-fot-it.sh
 RUN chmod +x /docker/wait-fot-it.sh
