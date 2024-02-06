@@ -28,3 +28,9 @@ Order by the commit I did:
     -   [Prettier](https://prettier.io/)
     -   [Husky](https://typicode.github.io/husky/#/)
     -   [lint-staged](https://github.com/okonet/lint-staged)
+-   [Vue.js](https://vuejs.org/) Vue.js version 3
+
+### Start the project
+
+docker compose build
+docker compose up
