@@ -77,4 +77,7 @@ Rails.application.configure do
   config.logger = ActiveSupport::Logger.new(STDOUT)
     .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
     .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+
+  # [Blocked host] clear the entire whitelist, which lets through requests for all hostnames.
+  config.hosts.clear
 end

@@ -2,7 +2,7 @@
     <div class="form">
         <div class="form-box pt-25">
             <div class="form-bg py-30 px-50">
-                <span class="header pb-25">Create your account</span>
+                <span class="header pb-25">Sign in to your account</span>
 
                 <span v-if="showMessage" class="header pb-25">
                     You've clicked on Submit button
@@ -16,13 +16,7 @@
 
                     <div class="field pb-25">
                         <label for="password">Password</label>
-                        {{ user.com }}
                         <input v-model="user.password" type="password" />
-                    </div>
-
-                    <div class="field pb-25">
-                        <label for="password">Verify Password</label>
-                        <input v-model="user.password_confirmation" type="password" />
                     </div>
 
                     <div class="field pb-25">
@@ -32,8 +26,8 @@
 
                 <div class="footer pt-25 text-center">
                     <span>
-                        Do you already have an account?
-                        <router-link :to="{ name: 'login' }">Login</router-link>
+                        Don't have an account?
+                        <router-link :to="{ name: 'signup' }">Sign up</router-link>
                     </span>
                 </div>
             </div>
@@ -42,22 +36,42 @@
 </template>
 
 <script>
+import { error } from 'console'
 export default {
-    name: 'SignupPage',
+    name: 'LoginPage',
     data() {
         return {
             user: {
                 email: '',
                 password: '',
-                password_confirmation: '',
             },
             showMessage: false,
         }
     },
+    computed: {
+        loggedIn() {
+            return this.$store.state.auth.status.loggedIn
+        },
+    },
+    created() {
+        if (this.loggedIn) this.redirectToPanel()
+    },
     methods: {
         submit() {
-            this.showMessage = true
+            this.$store.dispatch('auth/login', this.user).then(
+                () => {
+                    this.redirectToPanel()
+                },
+                (error) => {
+                    console.log('error', error)
+                },
+            )
+        },
+        redirectToPanel() {
+            window.location.href = '/panel/'
         },
     },
 }
 </script>
+
+<style lang="scss" scoped></style>
