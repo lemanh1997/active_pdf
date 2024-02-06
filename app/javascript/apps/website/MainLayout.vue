@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        Hello World
         <div class="header-bar">
             <h1 class="logo">RailsViteVue</h1>
             <ul class="slider-menu">
@@ -42,7 +41,6 @@ export default {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #fff;
 }
 .header-bar {
     position: relative;
