@@ -14,4 +14,16 @@ export default defineConfig({
         ],
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                sourceMap: false,
+                additionalData(source, fp) {
+                    if (fp.endsWith('variables.scss')) return source
+
+                    return `@import "@/assets/css/_variables.scss"; ${source}`
+                },
+            },
+        },
+    },
 })
