@@ -4,17 +4,14 @@ import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
 
 export default defineConfig({
-  plugins: [
-    RubyPlugin(),
-    vue(),
-  ],
-  resolve: {
-    alias: [
-      {
-        find: "@",
-        replacement: path.resolve(__dirname, "app", "javascript"),
-      },
-    ],
-    extensions: ['.vue', '.json', '.js'],
-  },
+    plugins: [vue(), RubyPlugin()],
+    resolve: {
+        alias: [
+            {
+                find: '@',
+                replacement: path.resolve(__dirname, 'app', 'javascript'),
+            },
+        ],
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+    },
 })
