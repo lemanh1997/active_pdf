@@ -1,18 +1,30 @@
 <template>
-    <div>
-        <router-view />
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <MainMenu />
+            </div>
+            <div class="container">
+                <router-view />
+            </div>
+        </div>
+        <div class="sidebar">
+            <MainSidebar />
+        </div>
     </div>
 </template>
 
-<style scoped>
-div {
-    width: 70vw;
-    margin: 0 auto;
-}
-</style>
+<script>
+import MainMenu from './MainMenu.vue'
+import MainSidebar from './MainSideBar.vue'
 
-<style>
-.form-field input {
-    width: 100%;
+export default {
+    components: {
+        MainMenu,
+        MainSidebar,
+    },
+    data() {
+        return {}
+    },
 }
-</style>
+</script>
