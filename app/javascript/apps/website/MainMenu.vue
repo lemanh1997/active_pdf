@@ -1,19 +1,17 @@
 <template>
-    <div>
-        <nav class="navbar">
-            <h2 class="navbar-logo">Rails 7 Vuejs</h2>
-            <ul class="navbar-nav">
-                <li
-                    v-for="item in menuItems"
-                    :key="item.routeName"
-                    class="nav-item"
-                    @click="goTo(item)"
-                >
-                    {{ item.title }}
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <nav class="navbar">
+        <h2 class="navbar-logo">Rails 7 Vuejs</h2>
+        <ul class="navbar-nav">
+            <li
+                v-for="item in menuItems"
+                :key="item.routeName"
+                class="nav-item"
+                @click="goTo(item)"
+            >
+                {{ item.title }}
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>

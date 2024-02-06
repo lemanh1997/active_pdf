@@ -1,9 +1,9 @@
 <template>
-    <div class="container">
+    <div>
         <div class="header-bar">
             <MainMenu />
         </div>
-        <div>
+        <div class="container mt-15">
             <router-view />
         </div>
     </div>
@@ -26,10 +26,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-.container {
-    margin: 0;
-    padding: 0;
-}
-</style>
