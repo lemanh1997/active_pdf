@@ -28,3 +28,8 @@ Order by the commit I did:
     -   [Prettier](https://prettier.io/)
     -   [Husky](https://typicode.github.io/husky/#/)
     -   [lint-staged](https://github.com/okonet/lint-staged)
+
+### Start the project
+
+docker compose build
+docker compose up
